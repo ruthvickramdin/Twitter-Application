@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <meta name="description" content="Source code generated using layoutit.com">
+    <meta name="author" content="LayoutIt!">
+
+    <link href="./css/bootstrap.min.css" rel="stylesheet">
+	<link rel="stylesheet" href="./css/style.css" type="text/css" />
+	<title>Twitter Application</title>
+	
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+</head>
+
+<body>
+
+<div class="header">
+        <a href="http://knoesis.org" target="_blank">
+            <img class="kLogo" src="./images/knoesisLogo.png" alt="Knoesis_Logo" />
+        </a>
+        <a href="http://www.wright.edu" target="_blank">
+            <img class="wsuLogo" src="./images/wsuLogo.png" alt="WSU_Logo" />
+        </a>
+        <br />
+    </div>
+	
+	<div id="container">
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col-md-12">
+					<div class="row">
+						<div class="col-md-4">
+							<h3>
+								w097rxr
+							</h3>
+							<div id="pic"> 
+								<img alt="ProfilePic.jpg" src="./images/ProfilePic.JPG" />
+							</div>
+							<div>
+							<h3>
+								Ruthvick Ramdin
+							</h3>
+							</div>
+							<h3>
+								@WIS class
+							</h3>
+						</div>
+						<div class="col-md-8">
+							<div class="row" id="outerDiv" >
+								<div class="col-md-12" id="tweetDiv">
+									
+								</div>
+							</div>
+							<br>
+							<br>
+							<div class="row">
+								<div class="col-md-12">
+									<input type="text" id="tweetTxt" maxlength="250"/>
+								</div>
+							</div>
+							<br>
+							<div class="row">
+								<div class="col-md-6">	 
+									<input Value="Tweet" type="submit" class="btn btn-primary" id="tweet" />
+								</div>
+								<div class="col-md-6">
+									<input Value="Refresh" type="submit" class="btn btn-primary" id="refresh" />
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<script>
+		$(document).ready(function(){
+			
+			$('#tweet').click(function(){
+				var tweetTxt = $("#tweetTxt").val();
+				var clickBtnValue = $(this).val();
+				var ajaxurl = 'interface.php',
+				data =  {'action': clickBtnValue, 'tweetText': tweetTxt};
+				
+				$.post(ajaxurl, data, function (response) {
+					$("#tweetTxt").val("");
+					$('#refresh').click();
+				});
+			});
+			
+			$('#refresh').click(function(){
+				var clickBtnValue = $(this).val();
+				var ajaxurl = 'interface.php',
+				data =  {'action': clickBtnValue};
+				$.post(ajaxurl, data, function (response) {
+					var obj = JSON.parse(response);
+					populate(obj);
+				});
+			});
+		});
+		
+		function populate(data) {
+		
+			document.getElementById("tweetDiv").innerHTML = "";
+			
+			var ul = document.createElement('ul');
+			ul.setAttribute('id','proList');
+			
+			document.getElementById('tweetDiv').appendChild(ul);
+			data.forEach(renderProductList);
+
+			function renderProductList(element, index, arr) {
+				var li = document.createElement('li');
+				li.setAttribute('class','item');
+				ul.appendChild(li);
+				li.innerHTML=li.innerHTML + "#"+element.tweetText + "<br>" + "@"+element.author + 
+				"&emsp;&emsp;&emsp;&emsp;&emsp;" + element.date + "<hr>";
+			}
+		}
+	</script>
+
+</body>
+</html>

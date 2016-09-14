@@ -1,0 +1,92 @@
+* {
+	margin: 0;
+}
+
+body{
+	background-image: url("../images/CloudBackground.jpg");
+	margin-top: 1%;
+    margin-left: 8%;
+    margin-right: 8%;
+    overflow: auto;
+    overflow-x: hidden;
+}
+
+/************** Header ****************/
+
+div.header {
+    height: 15%;
+    width: 100%;
+}
+
+img.kLogo {
+    float: left;
+    height: 100%;
+    width: 18%;
+}
+
+img.wsuLogo {
+    float: right;
+	margin-top:1%;
+    height: 100%;
+    width: 15%;
+}
+
+/***************************************/
+
+#container {
+    margin-left: 15%;
+	margin-right: 15%;
+	margin-top: 2%;
+	margin-bottom: 5%;
+	
+    border: 8px solid rgba(255, 255, 255, .4);
+	border-radius: 10px;
+}
+
+table {
+			width: 100%;
+			overflow: auto;
+			overflow-x: auto;
+			position: static;
+		}
+		th {
+			background: #f8f8f8;
+			text-align:center;
+			font-weight: bold;    
+			padding-top: 5px;
+			width:100px;
+			position: static;
+		}
+		td {
+			padding: 2px;
+			width: 100px;
+		}
+		table, th, td {
+			border: 1px solid black;
+		}
+		#refresh {
+			text-align:center; float:left; margin-bottom:5%; margin-left:5%;
+		}
+		#tweet {
+			text-align:center; float:right; margin-bottom:5%; margin-left:5%;
+		}
+		#tweetTxt {
+			width:90%; height:10%; border-radius: 15px;
+		}
+		#pic {
+			margin-left: 5%; 
+		}
+		#pic img {
+			border-radius:60px;
+			height: 250px;
+			weight: 200px;
+		}
+		h3 {
+			background-color: white; text-align:center; margin-right:15%; border-radius: 10px;
+		}
+		 #outerDiv {
+			 width:100%; height:300px; display:block; position:static;
+		}
+		#outerDiv #tweetDiv {
+			overflow: auto; height:100%; background-color:white; margin-top:5%; width:100%; display:block; border-radius: 15px; color:blue;
+		}
